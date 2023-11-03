@@ -4,6 +4,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import random
 import string
 from datetime import datetime, timedelta
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+import requests
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -90,6 +92,7 @@ def fetch_pass_details(pass_id):
 @app.route('/')
 def index():
     return render_template('login.html')
+
 
 @app.route('/dashboard')
 def dashboard():
